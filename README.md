@@ -1,4 +1,4 @@
-# UdemyBases
+# UnityBases
 
 Repositorio con los proyectos base del curso de desarrollo de videojuegos en Unity con C#.
 
