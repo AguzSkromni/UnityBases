@@ -18,6 +18,11 @@ public class CollideFloor : MonoBehaviour
         {
             Debug.Log("Choco el: " + other.gameObject.tag);
         }
+
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 
 

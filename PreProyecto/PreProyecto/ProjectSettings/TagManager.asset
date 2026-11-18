@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - ObjectCollision
+  - Bullet
   layers:
   - Default
   - TransparentFX

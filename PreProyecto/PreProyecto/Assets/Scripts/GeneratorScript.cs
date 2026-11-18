@@ -10,36 +10,32 @@ public class GeneratorScript : MonoBehaviour
 
     //Inspect the bullet Prefab
     [SerializeField] private GameObject bulletObject;
-    [SerializeField] private float timer = 5;
-    private bool bandera = true;
-    private int temporizador = 0;
+    [SerializeField] private float timerLeft = 5f;   // intervalo en segundos
+    [SerializeField] private int maxObjetos = 5;
+
+    private float temporizador;
     private int contadorObjectosCreados = 0;
+
+
+    void Start()
+    {
+        temporizador = timerLeft;
+    }
 
 
     // Update is called once per frame
     void Update()
     {
+        if (contadorObjectosCreados >= maxObjetos) return;
 
-        while (bandera)
+        temporizador -= Time.deltaTime;
+
+        if (temporizador <= 0f)
         {
-            if(timer >= temporizador)
-            {
-                contdown();
-            }
-            else
-            {
-                Instantiate(bulletObject);
-                contadorObjectosCreados++;
-                Debug.Log("contador: " + contadorObjectosCreados);
-            }
-
+            GameObject bala = Instantiate(bulletObject, transform.position, Quaternion.identity);
+            contadorObjectosCreados++;
+            temporizador = timerLeft;
+            Debug.Log("Objetos creados: " + contadorObjectosCreados);
         }
-
-
-    }
-
-    private void contdown()
-    {
-            timer -= Time.deltaTime;
     }
 }
